@@ -1,4 +1,5 @@
-import { ChakraProvider, Box, Text, Link, VStack, Code, Grid, theme } from '@chakra-ui/react';
+import { ChakraProvider, theme } from '@chakra-ui/react';
+import { Box } from './components';
 
 export const App = () => (
 	<ChakraProvider theme={theme}>
