@@ -10,3 +10,8 @@ export default interface Forecast {
 	// meanTemp: number;
 	// modeTemp: number;
 }
+
+export interface Geo {
+	lat: number;
+	lon: number;
+}
