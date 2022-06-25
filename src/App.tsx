@@ -1,10 +1,12 @@
 import { ChakraProvider, theme } from '@chakra-ui/react';
-import { Box } from './components';
+// import Layout from './sections/Layout';
+import Layout from './sections/Layout';
+import LocationForm from './sections/LocationForm';
 
 export const App = () => (
 	<ChakraProvider theme={theme}>
-		<Box textAlign='center' fontSize='xl'>
-			hello world
-		</Box>
+		<Layout>
+			<LocationForm />
+		</Layout>
 	</ChakraProvider>
 );
