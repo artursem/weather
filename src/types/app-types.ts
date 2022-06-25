@@ -1,4 +1,4 @@
-export default interface Forecast {
+export interface Forecast {
 	city: string;
 	icon: string;
 	morningTemp: number;
@@ -14,4 +14,15 @@ export default interface Forecast {
 export interface Geo {
 	lat: number;
 	lon: number;
+}
+
+export enum Status {
+	idle,
+	loading,
+	error,
+}
+
+export enum Method {
+	byCity,
+	byLocation,
 }

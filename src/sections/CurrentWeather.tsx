@@ -1,4 +1,4 @@
-import Forecast from 'src/types/app-types';
+import { Forecast } from 'src/types/app-types';
 import { Card, Heading, HeadingSecondary, List, ListItem, Icon } from 'src/components';
 
 const CurrentWeather = ({ city, icon, dayTemp, morningTemp, humidity, nightTemp }: Forecast) => {
