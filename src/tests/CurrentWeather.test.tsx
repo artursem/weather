@@ -3,7 +3,16 @@ import { render } from 'src/test-utils';
 import CurrentWeather from 'src/sections/CurrentWeather';
 
 test('Component renders data', () => {
-	render(<CurrentWeather city='Wrocław' icon='' temp={30} />);
+	render(
+		<CurrentWeather
+			city='Wrocław'
+			icon='10d'
+			dayTemp={30}
+			morningTemp={30}
+			humidity={30}
+			nightTemp={30}
+		/>
+	);
 
 	const cityHeader = screen.getByRole('heading', { name: /wrocław/i });
 	const icon = screen.getByRole('img', { name: /icon/i });
