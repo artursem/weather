@@ -1,23 +1,17 @@
-import React from 'react';
-import { Card, Heading, HeadingSecondary, List, ListItem } from 'src/components';
+import Forecast from 'src/types/app-types';
+import { Card, Heading, HeadingSecondary, List, ListItem, Icon } from 'src/components';
 
-type CurrentWeatherProps = {
-	city: string;
-	temp: number;
-	icon: string;
-};
-
-const CurrentWeather = ({ city, icon, temp }: CurrentWeatherProps) => {
+const CurrentWeather = ({ city, icon, dayTemp, morningTemp, humidity, nightTemp }: Forecast) => {
 	return (
 		<Card dir='column' alignItems='center'>
 			<Heading>{city}</Heading>
-			<img src='http://openweathermap.org/img/wn/10d@2x.png' alt='icon' />
+			<Icon condition={icon} isBig={true} />
 			<HeadingSecondary>30*C</HeadingSecondary>
 			<List>
-				<ListItem>Morning temperature: </ListItem>
-				<ListItem>Day temperature: </ListItem>
-				<ListItem>Night temperature: </ListItem>
-				<ListItem>Humidity: </ListItem>
+				<ListItem>Morning temperature: {morningTemp}&deg;C</ListItem>
+				<ListItem>Day temperature: {dayTemp}&deg;C</ListItem>
+				<ListItem>Night temperature: {nightTemp}&deg;C</ListItem>
+				<ListItem>Humidity: {humidity}%</ListItem>
 			</List>
 		</Card>
 	);

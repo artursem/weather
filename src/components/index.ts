@@ -8,3 +8,4 @@ export { default as HeadingSecondary } from './HeadingSecondary';
 export { default as List } from './List';
 export { default as ListItem } from './ListItem';
 export { default as Form } from './Form';
+export { default as Icon } from './Icon';
