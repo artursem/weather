@@ -11,10 +11,8 @@ export const App = () => {
 	const { fetchWeather, forecast, current, status } = useRequest();
 
 	const handleSearch = (location: Query) => {
-		console.log(location);
 		fetchWeather(location);
 	};
-	console.log(forecast);
 	return (
 		<ChakraProvider theme={theme}>
 			<Layout>
