@@ -33,6 +33,7 @@ const useRequest = () => {
 			return;
 		}
 		console.log(formatData(data));
+		// console.log(data);
 
 		// if error status.error
 		// format data into Forecast
