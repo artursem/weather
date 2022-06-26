@@ -13,15 +13,16 @@ export const App = () => {
 		console.log(location);
 		fetchWeather(location);
 	};
-	// let content
+	let content;
 
+	console.log('status:', status);
 	return (
 		<ChakraProvider theme={theme}>
 			<Layout>
 				<LocationForm onSearch={handleSearch} />
-				{/* {status === Status.loading && <Card>loading...</Card>} */}
+				{status === Status.loading && <Card>loading...</Card>}
 
-				{status === Status.idle && <CurrentWeather current={current} />}
+				{status === 'idle' && <CurrentWeather current={current} />}
 			</Layout>
 		</ChakraProvider>
 	);

@@ -20,7 +20,7 @@ const initialForecast: Forecast[] = [
 
 const initialCurrent: Current = {
 	city: '',
-	icon: '',
+	icon: '10d',
 	temp: 0,
 	humidity: 0,
 };
@@ -28,11 +28,10 @@ const initialCurrent: Current = {
 const useRequest = () => {
 	const [current, setCurrent] = useState(initialCurrent);
 	const [forecast, setForecast] = useState(initialForecast);
-	// const [status, setStatus] = useState(Status.empty);
-	let status = Status.empty;
+	const [status, setStatus] = useState(Status.empty);
 
 	const fetchWeather = useCallback(async ({ city, geo, method }: Query) => {
-		status = Status.loading;
+		setStatus(Status.loading);
 		let data;
 		if (method === Method.byCity && !!city) {
 			data = await fetchByCity(city);
@@ -41,7 +40,7 @@ const useRequest = () => {
 			data = await fetchByLocation(geo);
 		}
 		if (data instanceof Error) {
-			status = Status.error;
+			setStatus(Status.error);
 			return;
 		}
 		const currentWeather: Current = {
@@ -52,8 +51,8 @@ const useRequest = () => {
 		};
 		setCurrent(currentWeather);
 		setForecast(formatForecast(data));
+		setStatus(Status.idle);
 	}, []);
-	status = Status.idle;
 
 	return { current, forecast, status, fetchWeather };
 };
