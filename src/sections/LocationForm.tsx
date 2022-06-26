@@ -10,6 +10,9 @@ const LocationForm = ({ onSearch }: LocationFormProps) => {
 	const [locationInput, setLocationInput] = useState('');
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
+		if (locationInput.length === 0) {
+			return;
+		}
 		onSearch({ method: Method.byCity, city: locationInput });
 	};
 	const handleInputChange = (event: FormEvent<HTMLInputElement>) => {

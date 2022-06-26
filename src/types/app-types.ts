@@ -1,14 +1,19 @@
 export interface Forecast {
-	city: string;
-	icon: string;
-	morningTemp: number;
-	dayTemp: number;
-	nightTemp: number;
+	night: number;
+	morning: number;
+	day: number;
 	humidity: number;
-	// maxTemp: number;
-	// minTemp: number;
-	// meanTemp: number;
-	// modeTemp: number;
+	minTemp: number;
+	maxTemp: number;
+	meanTemp: number;
+	modeTemp: number;
+}
+
+export interface Current {
+	city: string;
+	temp: number;
+	icon: string;
+	humidity: number;
 }
 
 export interface Geo {
@@ -28,7 +33,8 @@ export interface Query {
 }
 
 export enum Status {
-	idle,
-	loading,
-	error,
+	empty = 'empty',
+	idle = 'idle',
+	loading = 'loading',
+	error = 'error',
 }

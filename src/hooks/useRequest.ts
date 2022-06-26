@@ -1,26 +1,38 @@
 import { useState, useCallback } from 'react';
-import { Status, Method, Forecast, Query } from 'src/types/app-types';
+import { Status, Method, Forecast, Current, Query } from 'src/types/app-types';
 import { fetchByCity } from 'src/services/fetchByCity';
 import { fetchByLocation } from 'src/services/fetchByLocation';
-import { formatData } from 'src/utils/format-data';
+import { formatForecast } from 'src/utils/format-forecast';
+import temp from 'src/utils/temp';
 
 const initialForecast: Forecast[] = [
 	{
-		city: '',
-		icon: '',
-		morningTemp: 0,
-		dayTemp: 0,
-		nightTemp: 0,
+		night: 0,
+		morning: 0,
+		day: 0,
 		humidity: 0,
+		minTemp: 0,
+		maxTemp: 0,
+		meanTemp: 0,
+		modeTemp: 0,
 	},
 ];
 
+const initialCurrent: Current = {
+	city: '',
+	icon: '',
+	temp: 0,
+	humidity: 0,
+};
+
 const useRequest = () => {
+	const [current, setCurrent] = useState(initialCurrent);
 	const [forecast, setForecast] = useState(initialForecast);
-	const [status, setStatus] = useState(Status.idle);
+	// const [status, setStatus] = useState(Status.empty);
+	let status = Status.empty;
 
 	const fetchWeather = useCallback(async ({ city, geo, method }: Query) => {
-		setStatus(Status.loading);
+		status = Status.loading;
 		let data;
 		if (method === Method.byCity && !!city) {
 			data = await fetchByCity(city);
@@ -29,17 +41,21 @@ const useRequest = () => {
 			data = await fetchByLocation(geo);
 		}
 		if (data instanceof Error) {
-			setStatus(Status.error);
+			status = Status.error;
 			return;
 		}
-		console.log(formatData(data));
-		// console.log(data);
-
-		// if error status.error
-		// format data into Forecast
+		const currentWeather: Current = {
+			city: data.city.name,
+			icon: data.list[0].weather[0].icon,
+			humidity: data.list[0].main.humidity,
+			temp: temp(data.list[0].main.temp),
+		};
+		setCurrent(currentWeather);
+		setForecast(formatForecast(data));
 	}, []);
+	status = Status.idle;
 
-	return { forecast, status, fetchWeather };
+	return { current, forecast, status, fetchWeather };
 };
 
 export default useRequest;

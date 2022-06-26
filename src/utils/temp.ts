@@ -1,5 +1,5 @@
 const convertFtoC = (temp: number) => {
-	return (temp - 272).toFixed();
+	return Number((temp - 272).toFixed());
 };
 
 export default convertFtoC;
