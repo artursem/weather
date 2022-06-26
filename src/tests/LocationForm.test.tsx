@@ -3,7 +3,7 @@ import { render } from 'src/test-utils';
 import LocationForm from 'src/sections/LocationForm';
 
 test('LocationForm component renders form', () => {
-	render(<LocationForm />);
+	render(<LocationForm onSearch={jest.fn} />);
 	const input = screen.getByRole('textbox');
 	const searchBtn = screen.getByRole('button', { name: /go/i });
 	const gpsBtn = screen.getByRole('button', { name: /gps/i });

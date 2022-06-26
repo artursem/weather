@@ -16,13 +16,19 @@ export interface Geo {
 	lon: number;
 }
 
+export enum Method {
+	byCity = 'byCity',
+	byLocation = 'byLocations',
+}
+
+export interface Query {
+	geo?: Geo;
+	city?: string;
+	method: Method;
+}
+
 export enum Status {
 	idle,
 	loading,
 	error,
-}
-
-export enum Method {
-	byCity,
-	byLocation,
 }

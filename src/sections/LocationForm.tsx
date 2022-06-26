@@ -1,11 +1,16 @@
 import { FormEvent, useState } from 'react';
+import { Method, Query } from 'src/types/app-types';
 import { Input, Stack, Button, Form } from 'src/components';
 
-const LocationForm = () => {
+type LocationFormProps = {
+	onSearch: (query: Query) => void;
+};
+
+const LocationForm = ({ onSearch }: LocationFormProps) => {
 	const [locationInput, setLocationInput] = useState('');
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		console.log(locationInput);
+		onSearch({ method: Method.byCity, city: locationInput });
 	};
 	const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
 		setLocationInput(event.currentTarget.value);

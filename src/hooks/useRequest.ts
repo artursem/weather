@@ -1,12 +1,7 @@
 import { useState, useCallback } from 'react';
-import { Status, Geo, Method, Forecast } from 'src/types/app-types';
+import { Status, Method, Forecast, Query } from 'src/types/app-types';
 import { fetchByCity } from 'src/services/fetchByCity';
 import { fetchByLocation } from 'src/services/fetchByLocation';
-
-type Query = {
-	value: Geo | string;
-	method: Method;
-};
 
 const initialForecast: Forecast = {
 	city: '',
@@ -21,15 +16,16 @@ const useRequest = () => {
 	const [forecast, setForecast] = useState(initialForecast);
 	const [status, setStatus] = useState(Status.idle);
 
-	const fetchWeather = useCallback(async ({ value, method }: Query) => {
+	const fetchWeather = useCallback(async ({ city, geo, method }: Query) => {
 		setStatus(Status.loading);
 		let data;
-		if (method === Method.byCity && typeof value === 'string') {
-			data = fetchByCity(value);
+		if (method === Method.byCity && !!city) {
+			data = await fetchByCity(city);
 		}
-		if (method === Method.byLocation && typeof value === 'object') {
-			data = fetchByLocation(value);
+		if (method === Method.byLocation && !!geo) {
+			data = await fetchByLocation(geo);
 		}
+		console.log(data);
 		// if error status.error
 		// format data into Forecast
 	}, []);
