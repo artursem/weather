@@ -8,7 +8,7 @@ type CurrentWeatherProps = {
 const CurrentWeather = (props: CurrentWeatherProps) => {
 	const { city, icon, temp, humidity } = props.current;
 	return (
-		<Card dir='column' alignItems='center'>
+		<Card flexDirection='column' alignItems='center' justifyContent='center'>
 			<Heading>{city}</Heading>
 			<Icon condition={icon} isBig={true} />
 			<HeadingSecondary>{temp}&deg;C</HeadingSecondary>
