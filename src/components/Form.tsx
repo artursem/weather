@@ -1,8 +1,14 @@
-import { FC } from 'react';
+import { FormEvent, ReactNode } from 'react';
 import { Stack } from './';
-const Form: FC<{ children: React.ReactNode }> = ({ children }) => {
+
+type FormProps = {
+	children: ReactNode;
+	onSubmit: (event: FormEvent) => void;
+};
+
+const Form = ({ children, onSubmit }: FormProps) => {
 	return (
-		<form>
+		<form onSubmit={onSubmit}>
 			<Stack direction='row' justifyContent='stretch' alignItems='center' height='3rem'>
 				{children}
 			</Stack>
