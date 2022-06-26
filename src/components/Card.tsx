@@ -4,7 +4,17 @@ import Box from './Box';
 
 const Card: FC<BoxProps> = (props) => {
 	return (
-		<Box display='flex' border='1px solid #444' borderRadius='10px' minH='5rem' p='1rem' {...props}>
+		<Box
+			display='flex'
+			flexDirection='column'
+			alignItems='center'
+			justifyContent='center'
+			border='1px solid #444'
+			borderRadius='10px'
+			minH='5rem'
+			p='1rem'
+			{...props}
+		>
 			{props.children}
 		</Box>
 	);

@@ -18,6 +18,7 @@ export const App = () => {
 			<Layout>
 				<LocationForm onSearch={handleSearch} />
 				{status === Status.loading && <Card>loading...</Card>}
+				{status === Status.error && <Card>Error</Card>}
 				{status === 'idle' && <CurrentWeather current={current} />}
 				{status === 'idle' && <DisplayForecast forecast={forecast} />}
 			</Layout>
