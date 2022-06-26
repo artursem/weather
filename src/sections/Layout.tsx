@@ -11,7 +11,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 			justifyContent='center'
 			alignItems='stretch'
 		>
-			<Stack dir='column' mx='1rem' my='1rem' w='700px' minH='100vh'>
+			<Stack dir='column' mx='1rem' my='1rem' w='700px'>
 				{children}
 			</Stack>
 		</Box>
