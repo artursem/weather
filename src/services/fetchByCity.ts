@@ -4,7 +4,6 @@ export const fetchByCity = async (city: string) => {
 	}
 
 	try {
-		console.log('try');
 		const response = await fetch(
 			`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_KEY}`
 		);
