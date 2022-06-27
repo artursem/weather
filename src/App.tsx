@@ -3,7 +3,7 @@ import { Query, Status } from './types/app-types';
 import { ChakraProvider, Spinner, theme } from '@chakra-ui/react';
 import Layout from './sections/Layout';
 import LocationForm from './sections/LocationForm';
-import { Card } from './components';
+import { Card, ArrowUp } from './components';
 import CurrentWeather from './sections/CurrentWeather';
 import DisplayForecast from './sections/DisplayForecast';
 
@@ -20,6 +20,12 @@ export const App = () => {
 				{status === Status.loading && (
 					<Card>
 						<Spinner />
+					</Card>
+				)}
+				{status === Status.empty && (
+					<Card>
+						<ArrowUp />
+						Pick location
 					</Card>
 				)}
 				{status === Status.error && <Card>Error</Card>}

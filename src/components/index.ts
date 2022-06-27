@@ -5,6 +5,7 @@ export { default as Input } from './Input';
 export { default as Card } from './Card';
 export { default as PinAlt } from './PinAlt';
 export { default as Search } from './Search';
+export { default as ArrowUp } from './ArrowUp';
 export { default as Heading } from './Heading';
 export { default as HeadingSecondary } from './HeadingSecondary';
 export { default as List } from './List';
