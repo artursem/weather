@@ -20,8 +20,8 @@ export const formatForecast = (data: ForecastResponse) => {
 		};
 	});
 
-	const separateIntoDays = (arr: any) => {
-		return arr.reduce((acc: any, cur: any) => {
+	const separateIntoDays = (all: any) => {
+		return all.reduce((acc: any, cur: any) => {
 			acc[cur['day']] = [...(acc[cur['day']] || []), cur];
 			return acc;
 		}, {});
@@ -57,7 +57,7 @@ export const formatForecast = (data: ForecastResponse) => {
 
 		const stats = {
 			night: convertFtoC(Math.floor(day[0].temp)),
-			morning: convertFtoC(Math.floor(day[0].temp)),
+			morning: convertFtoC(Math.floor(day[2].temp)),
 			day: convertFtoC(Math.floor(day[4].temp)),
 			humidity: day[4].humidity,
 			minTemp: convertFtoC(Math.min(...allTemps)),
