@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Method, Query } from 'src/types/app-types';
-import { Input, Stack, Button, Form } from 'src/components';
+import { Input, Stack, Button, Form, PinAlt, Search } from 'src/components';
 
 type LocationFormProps = {
 	onSearch: (query: Query) => void;
@@ -22,8 +22,12 @@ const LocationForm = ({ onSearch }: LocationFormProps) => {
 		<Stack dir='horizontal'>
 			<Form onSubmit={handleSubmit}>
 				<Input type='text' id='locationInput' value={locationInput} onChange={handleInputChange} />
-				<Button type='submit'>go</Button>
-				<Button type='button'>gps</Button>
+				<Button type='submit' aria-label='Search'>
+					<Search />
+				</Button>
+				<Button type='button' aria-label='Weather for current location'>
+					<PinAlt />
+				</Button>
 			</Form>
 		</Stack>
 	);

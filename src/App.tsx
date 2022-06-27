@@ -1,6 +1,6 @@
 import useRequest from './hooks/useRequest';
 import { Query, Status } from './types/app-types';
-import { ChakraProvider, theme } from '@chakra-ui/react';
+import { ChakraProvider, Spinner, theme } from '@chakra-ui/react';
 import Layout from './sections/Layout';
 import LocationForm from './sections/LocationForm';
 import { Card } from './components';
@@ -17,7 +17,11 @@ export const App = () => {
 		<ChakraProvider theme={theme}>
 			<Layout>
 				<LocationForm onSearch={handleSearch} />
-				{status === Status.loading && <Card>loading...</Card>}
+				{status === Status.loading && (
+					<Card>
+						<Spinner />
+					</Card>
+				)}
 				{status === Status.error && <Card>Error</Card>}
 				{status === 'idle' && <CurrentWeather current={current} />}
 				{status === 'idle' && <DisplayForecast forecast={forecast} />}

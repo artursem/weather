@@ -12,7 +12,7 @@ const Card: FC<BoxProps> = (props) => {
 			border='1px solid'
 			borderColor='gray.700'
 			backgroundColor='blackAlpha.100'
-			borderRadius='10px'
+			borderRadius='5px'
 			minH='5rem'
 			p='1rem'
 			{...props}
