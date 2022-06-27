@@ -7,9 +7,11 @@ test('Component renders data', () => {
 
 	const cityHeader = screen.getByRole('heading', { name: /wrocław/i });
 	const icon = screen.getByRole('img', { name: /icon/i });
-	const temp = screen.getByText(/temperature/i);
+	const temp = screen.getByText(/30°C/i);
+	const humidity = screen.getByText(/humidity/i);
 
 	expect(cityHeader).toBeInTheDocument();
 	expect(icon).toBeInTheDocument();
 	expect(temp).toBeInTheDocument();
+	expect(humidity).toBeInTheDocument();
 });
