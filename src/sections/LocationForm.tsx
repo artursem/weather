@@ -22,7 +22,13 @@ const LocationForm = ({ onSearch, onCurrentLocation }: LocationFormProps) => {
 	return (
 		<Stack dir='horizontal'>
 			<Form onSubmit={handleSubmit}>
-				<Input type='text' id='locationInput' value={locationInput} onChange={handleInputChange} />
+				<Input
+					type='text'
+					id='locationInput'
+					placeholder='Type a city'
+					value={locationInput}
+					onChange={handleInputChange}
+				/>
 				<Button type='submit' aria-label='Search'>
 					<Search />
 				</Button>
