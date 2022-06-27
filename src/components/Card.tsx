@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { BoxProps } from '@chakra-ui/react';
+import { BoxProps, useColorModeValue } from '@chakra-ui/react';
 import Box from './Box';
 
 const Card: FC<BoxProps> = (props) => {
+	const bg = useColorModeValue('whiteAlpha.400', 'blackAlpha.100');
+	const border = useColorModeValue('gray.400', 'gray.700');
 	return (
 		<Box
 			display='flex'
@@ -10,8 +12,8 @@ const Card: FC<BoxProps> = (props) => {
 			alignItems='center'
 			justifyContent='center'
 			border='1px solid'
-			borderColor='gray.700'
-			backgroundColor='blackAlpha.100'
+			borderColor={border}
+			backgroundColor={bg}
 			borderRadius='5px'
 			minH='5rem'
 			p='1rem'
