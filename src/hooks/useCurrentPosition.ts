@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Method, Query } from 'src/types/app-types';
+import { Method, Query, Status } from 'src/types/app-types';
 
 const useCurrentPosition = () => {
-	const [location, setLocation] = useState<Query>({
+	const [currentStatus, setCurrentStatus] = useState(Status.empty);
+	const [currentLocation, setCurrentLocation] = useState<Query>({
 		method: Method.byLocation,
 		geo: { lat: 0, lon: 0 },
 	});
@@ -12,12 +13,15 @@ const useCurrentPosition = () => {
 			method: Method.byLocation,
 			geo: { lat: position.coords.latitude, lon: position.coords.longitude },
 		};
-		setLocation(newQuery);
+		setCurrentStatus(Status.idle);
+		setCurrentLocation(newQuery);
 	};
-	const failure = (err: GeolocationPositionError) => {};
+	const failure = (err: GeolocationPositionError) => {
+		setCurrentStatus(Status.error);
+	};
 
 	navigator.geolocation.getCurrentPosition(success, failure);
 
-	return location;
+	return { currentLocation, currentStatus };
 };
 export default useCurrentPosition;

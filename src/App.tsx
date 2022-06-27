@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import useRequest from './hooks/useRequest';
 import useCurrentPosition from './hooks/useCurrentPosition';
 import { Query, Status } from './types/app-types';
@@ -12,14 +12,20 @@ import DisplayForecast from './sections/DisplayForecast';
 
 export const App = () => {
 	const { fetchWeather, forecast, current, status } = useRequest();
-	const currentPosition = useCurrentPosition();
+	const { currentLocation, currentStatus } = useCurrentPosition();
 	const handleSearch = (location: Query) => {
 		fetchWeather(location);
 	};
 
 	const handleCurrentLocation = useCallback(() => {
-		fetchWeather(currentPosition);
-	}, [currentPosition, fetchWeather]);
+		fetchWeather(currentLocation);
+	}, [currentLocation, fetchWeather]);
+
+	useEffect(() => {
+		if (currentStatus === Status.idle) {
+			handleCurrentLocation();
+		}
+	}, [currentStatus]);
 
 	return (
 		<ChakraProvider theme={theme}>
