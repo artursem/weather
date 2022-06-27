@@ -14,7 +14,7 @@ All the data is fetched from OpenWeather [REST API](https://openweathermap.org/a
 
 ## Demo
 
-Here is a working live demo: [beat-hub.vercel.app](https://beat-hub.vercel.app/) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Here is a working live demo: [weather-ashy.vercel.app/](https://weather-ashy.vercel.app/)
 
 ## Built with
 
