@@ -4,9 +4,10 @@ import { Input, Stack, Button, Form, PinAlt, Search } from 'src/components';
 
 type LocationFormProps = {
 	onSearch: (query: Query) => void;
+	onCurrentLocation: () => void;
 };
 
-const LocationForm = ({ onSearch }: LocationFormProps) => {
+const LocationForm = ({ onSearch, onCurrentLocation }: LocationFormProps) => {
 	const [locationInput, setLocationInput] = useState('');
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
@@ -25,7 +26,7 @@ const LocationForm = ({ onSearch }: LocationFormProps) => {
 				<Button type='submit' aria-label='Search'>
 					<Search />
 				</Button>
-				<Button type='button' aria-label='Weather for current location'>
+				<Button type='button' aria-label='Weather for current location' onClick={onCurrentLocation}>
 					<PinAlt />
 				</Button>
 			</Form>
